@@ -61,8 +61,8 @@ public class CandidatoSQliteDAO implements CandidatoDAO {
             stmt.setInt(1,numero);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Partido partido = new PartidoSQliteDAO().buscar(rs.getInt("numero"));
-                Cargo cargo = new CargoSQliteDAO().buscar(rs.getInt("idcargo"));
+                Partido partido = new PartidoSQliteDAO().buscar(rs.getInt("partido"));
+                Cargo cargo = new CargoSQliteDAO().buscar(rs.getInt("cargo"));
                 a = new Candidato(rs.getInt("numero"),
                         rs.getString("nome"),
                         partido,cargo);
@@ -80,8 +80,8 @@ public class CandidatoSQliteDAO implements CandidatoDAO {
         try(PreparedStatement stmt = ConnectionFactory.criaStatement(sql)){
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Partido partido = new PartidoSQliteDAO().buscar(rs.getInt("numero"));
-                Cargo cargo = new CargoSQliteDAO().buscar(rs.getInt("idcargo"));
+                Partido partido = new PartidoSQliteDAO().buscar(rs.getInt("partido"));
+                Cargo cargo = new CargoSQliteDAO().buscar(rs.getInt("cargo"));
                 Candidato a = new Candidato(rs.getInt("numero"),
                                             rs.getString("nome"),
                                             partido,cargo);
